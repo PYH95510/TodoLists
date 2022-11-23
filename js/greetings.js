@@ -23,7 +23,7 @@ function onLoginSubmit(event){
 
 function paintGreetings(username) {
     greeting.innerText = `Hello ${username}`;
-    greeting.classList.remove(HIDDEN_CLASSNAME);
+    greeting.classList.remove(HIDDEN_CLASSNAME); //remove greeting from invisible node so make it visible
   }
 
 

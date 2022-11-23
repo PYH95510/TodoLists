@@ -9,40 +9,30 @@ const USERNAME_KEY ="username";
 
 
 function onLoginSubmit(event){
-    // const username = loginInput.value;
-    // if(username === ""){
-    //     alert("Please write your name");
-    // }else if(username.length > 15){
-    //     alert("your name is too long")
-    // } you can do this job in html 
+    
     event.preventDefault(); //prevent the defualt action which is refreshing the page
     const username = loginInput.value;
-    loginForm.classList.add(HIDDEN_CLASSNAME);
-    console.log(username);
+    loginForm.classList.add(HIDDEN_CLASSNAME); //here we add login form to hidden classname so we make it invisible
     localStorage.setItem(USERNAME_KEY,username);
     paintGreetings(username);
-    //greeting.innerText = "Hello " + username;
-    // greeting.innerText = `Hello ${username}`; //same as the above one
-    // greeting.classList.remove(HIDDEN_CLASSNAME);
+ 
     
 
     
 }
 
-function paintGreetings(username){
+function paintGreetings(username) {
     greeting.innerText = `Hello ${username}`;
     greeting.classList.remove(HIDDEN_CLASSNAME);
-}
+  }
 
 
-const savedUserName = localStorage.getItem(USERNAME_KEY);
-console.log(savedUserName);
+const savedUsername = localStorage.getItem(USERNAME_KEY);
 
-if(savedUserName === null){
-    //show the form
+
+if (savedUsername === null) {
     loginForm.classList.remove(HIDDEN_CLASSNAME);
-    loginForm.addEventListener("submit",onLoginSubmit);
-}else{
-    //show the greetings
-    paintGreetings(savedUserName);
-}
+    loginForm.addEventListener("submit", onLoginSubmit);
+  } else {
+    paintGreetings(savedUsername);
+  }

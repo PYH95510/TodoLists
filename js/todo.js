@@ -2,11 +2,11 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = toDoForm.querySelector("input"); 
 //we have two options either find from all the document or like this from find from toDoForm, documment.querySelector("#todo-form input")
 const todoList = document.getElementById("todo-list");
-
+const TODOS_KEY = "todos";
 const toDos = [];
 
 function saveTodos(){
-    localStorage.setItem("todos",JSON.stringify(toDos));
+    localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
 }
 
 
@@ -44,3 +44,14 @@ toDoForm.addEventListener("submit", handleToDoSubmit);
 
 /*so in concise, we need li (list item) to item lists in html so we first make it, and then inside them we made span which is inline
 text. each of the li span and button is appended. At the end, we append li to the todoList.*/
+
+function sayHello(item){
+    console.log("this is the ",item );
+}
+
+const savedTodos = localStorage.getItem(TODOS_KEY);
+
+if(savedTodos !== null){//after refreshed, if the savedTodos is not null, bring them and do the painTodos
+    const parsedToDos = JSON.parse(savedTodos);
+    parsedToDos.forEach(paintTodo);    
+}

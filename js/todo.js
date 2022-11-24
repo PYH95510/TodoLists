@@ -34,7 +34,7 @@ function handleToDoSubmit(event){
     event.preventDefault();
     const newTodo = toDoInput.value;
     toDoInput.value = "";
-    paintTodo(newTodo);
+    
     toDos.push(newTodo);
     paintTodo(newTodo);
     saveTodos();

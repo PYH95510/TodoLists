@@ -6,7 +6,7 @@ const todoList = document.getElementById("todo-list");
 const toDos = [];
 
 function saveTodos(){
-    
+    localStorage.setItem("todos",JSON.stringify(toDos));
 }
 
 
@@ -37,6 +37,7 @@ function handleToDoSubmit(event){
     paintTodo(newTodo);
     toDos.push(newTodo);
     paintTodo(newTodo);
+    saveTodos();
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);

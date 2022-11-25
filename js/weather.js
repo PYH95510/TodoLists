@@ -1,11 +1,19 @@
-const API_KEY = "3c031fe5cf31d48043061b64ec650394";
+const API_KEY = "";
 
 
 function onGeoSuccess(position){
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metrics`
-    fetch(url); //by using fetch, we call and bring the url.
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      const weather = document.querySelector("#weather span:first-child");
+      const city = document.querySelector("#weather span:last-child");
+
+      city.innerText = data.name;
+      weather.innerText = `${data.weather[0].main} / ${data.main.temp}`;
+    }); //by using fetch, we call and bring the url.
 
 }
 
